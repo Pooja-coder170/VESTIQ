@@ -1,1 +1,86 @@
-[]
+[
+  {
+    "id": "1788345350561-gtcm1x",
+    "userId": "guest-wc8vkji8",
+    "name": "brown",
+    "category": "Pants",
+    "color": "brown",
+    "details": "",
+    "image": "/uploads/1788345350560-k61bj1yy.jpg",
+    "filename": "1788345350560-k61bj1yy.jpg",
+    "originalName": "c.jpg",
+    "dateAdded": "2026-09-02T10:35:50.561Z"
+  },
+  {
+    "id": "1788345318033-0dge6p",
+    "userId": "guest-wc8vkji8",
+    "name": "white",
+    "category": "Shirt",
+    "color": "white",
+    "details": "",
+    "image": "/uploads/1788345318032-r0wvh7yj.jpg",
+    "filename": "1788345318032-r0wvh7yj.jpg",
+    "originalName": "4.jpg",
+    "dateAdded": "2026-09-02T10:35:18.033Z"
+  },
+  {
+    "id": "1788345276834-buudeb",
+    "userId": "guest-wc8vkji8",
+    "name": "white",
+    "category": "T-shirt",
+    "color": "white oversized",
+    "details": "",
+    "image": "/uploads/1788345276833-511znwo7.jpg",
+    "filename": "1788345276833-511znwo7.jpg",
+    "originalName": "3.jpg",
+    "dateAdded": "2026-09-02T10:34:36.834Z"
+  },
+  {
+    "id": "1788345204633-4luzfi",
+    "userId": "guest-wc8vkji8",
+    "name": "blue",
+    "category": "Jeans",
+    "color": "blue",
+    "details": "",
+    "image": "/uploads/1788345204631-20o0h8fv.jpg",
+    "filename": "1788345204631-20o0h8fv.jpg",
+    "originalName": "f.jpg",
+    "dateAdded": "2026-09-02T10:33:24.633Z"
+  },
+  {
+    "id": "1788345180276-r6yy5d",
+    "userId": "guest-wc8vkji8",
+    "name": "jeans",
+    "category": "Jeans",
+    "color": "black",
+    "details": "",
+    "image": "/uploads/1788345180272-iopcs676.jpg",
+    "filename": "1788345180272-iopcs676.jpg",
+    "originalName": "e.jpg",
+    "dateAdded": "2026-09-02T10:33:00.276Z"
+  },
+  {
+    "id": "1788345158450-jdp025",
+    "userId": "guest-wc8vkji8",
+    "name": "black 2",
+    "category": "T-shirt",
+    "color": "black",
+    "details": "",
+    "image": "/uploads/1788345158448-c6scz2e6.jpg",
+    "filename": "1788345158448-c6scz2e6.jpg",
+    "originalName": "2.jpg",
+    "dateAdded": "2026-09-02T10:32:38.450Z"
+  },
+  {
+    "id": "1788345107804-rwl8ul",
+    "userId": "guest-wc8vkji8",
+    "name": "black",
+    "category": "T-shirt",
+    "color": "black",
+    "details": "",
+    "image": "/uploads/1788345107798-ho840a4p.jpg",
+    "filename": "1788345107798-ho840a4p.jpg",
+    "originalName": "1.jpg",
+    "dateAdded": "2026-09-02T10:31:47.804Z"
+  }
+]

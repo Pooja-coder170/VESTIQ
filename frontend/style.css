@@ -3,4 +3,826 @@
 @media(max-width:480px){.hero h1{font-size:58px}.inline{align-items:start;gap:20px;flex-direction:column}.collection-grid,.wardrobe-grid,.gallery-grid,.planner-grid{grid-template-columns:1fr 1fr;gap:10px}.collection-grid article:first-child{grid-column:span 2}.collection-grid article img,.gallery-grid img,.gallery-grid img:first-child{height:260px}.gallery-grid img:first-child{grid-row:auto}.wardrobe-card img{height:210px}.wardrobe-card h3{font-size:17px}.day-card img{height:120px}.button{gap:12px;padding:12px}.statement{padding:80px 7vw}.contact h2{font-size:53px}footer{font-size:9px;gap:10px}}
 .match-result{margin-top:45px;border-top:1px solid var(--line);padding-top:25px;max-width:420px}.match-result h3{font-family:var(--serif);font-size:28px;font-weight:500;margin:0 0 16px}.match-result .outfit-pieces{height:90px}.match-result .outfit-pieces img{height:90px}
 .profile-section{display:grid;grid-template-columns:1fr 1fr;gap:8vw;background:#d7d0c5}.profile-section h2{font-size:clamp(44px,5vw,70px)}.profile-section>div:last-child{max-width:330px}.profile-section>div:last-child p{margin:0 0 28px}
-@media(max-width:800px){.profile-section{display:block}.profile-section>div:last-child{margin-top:30px}}
+@media(max-width:800px){.profile-section{display:block}.profile-section>div:last-child{margin-top:30px}}/* ============================================================
+   VESTIQ FUNCTIONAL COMPONENTS
+   ============================================================ */
+
+/* MODAL */
+
+.modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(0, 0, 0, 0.55);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        opacity 0.25s ease,
+        visibility 0.25s ease;
+}
+
+.modal.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-panel {
+    width: min(560px, 100%);
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    background: #f8f6f1;
+    color: #161616;
+
+    padding: 40px;
+
+    position: relative;
+
+    transform: translateY(20px);
+
+    transition:
+        transform 0.25s ease;
+}
+
+.modal.open .modal-panel {
+    transform: translateY(0);
+}
+
+.modal-close {
+    position: absolute;
+
+    right: 18px;
+    top: 15px;
+
+    width: 40px;
+    height: 40px;
+
+    border: 0;
+    background: transparent;
+
+    font-size: 30px;
+
+    cursor: pointer;
+
+    z-index: 5;
+}
+
+/* MODAL HEADING */
+
+.modal-heading {
+    margin-bottom: 30px;
+}
+
+.modal-heading h2 {
+    margin: 5px 0 0;
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size: clamp(
+        36px,
+        6vw,
+        54px
+    );
+
+    font-weight: 500;
+}
+
+.modal-heading em {
+    font-weight: 500;
+}
+
+/* FORMS */
+
+.clothing-form,
+#loginForm,
+#registerForm {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-size: 12px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.12em;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 14px 15px;
+
+    border: 1px solid #c9c5bd;
+
+    background: #fff;
+
+    color: #161616;
+
+    font-family: inherit;
+
+    outline: none;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #161616;
+}
+
+/* UPLOAD BOX */
+
+.upload-box {
+    display: block;
+
+    width: 100%;
+    min-height: 250px;
+
+    box-sizing: border-box;
+
+    border: 1px dashed #aaa;
+
+    background: #eeeae2;
+
+    cursor: pointer;
+
+    position: relative;
+
+    overflow: hidden;
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease;
+}
+
+.upload-box:hover {
+    border-color: #111;
+    background: #e8e3da;
+}
+
+.upload-content {
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+    text-align: center;
+
+    z-index: 2;
+}
+
+.upload-icon {
+    width: 50px;
+    height: 50px;
+
+    border: 1px solid #333;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    font-size: 25px;
+}
+
+.upload-content strong {
+    font-size: 15px;
+}
+
+.upload-content small {
+    font-size: 11px;
+
+    color: #777;
+}
+
+.upload-box img {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    display: none;
+
+    background: #eeeae2;
+
+    z-index: 1;
+}
+
+.upload-box.previewing
+.upload-content {
+    opacity: 0;
+}
+
+.upload-box.previewing img {
+    display: block;
+}
+
+/* BUTTON */
+
+.full-button {
+    width: 100%;
+    justify-content: center;
+}
+
+.button:disabled {
+    opacity: 0.5;
+
+    cursor: not-allowed;
+}
+
+/* FORM MESSAGE */
+
+.form-message {
+    min-height: 20px;
+
+    color: #a22;
+
+    font-size: 13px;
+}
+
+/* AUTH SWITCH */
+
+.switch-auth {
+    text-align: center;
+
+    font-size: 13px;
+
+    color: #666;
+}
+
+.link-button {
+    border: 0;
+
+    background: transparent;
+
+    text-decoration: underline;
+
+    cursor: pointer;
+
+    font: inherit;
+
+    color: #111;
+}
+
+/* TOAST */
+
+.toast {
+    position: fixed;
+
+    left: 50%;
+    bottom: 30px;
+
+    z-index: 10000;
+
+    transform:
+        translate(-50%, 20px);
+
+    background: #111;
+
+    color: white;
+
+    padding: 14px 22px;
+
+    font-size: 13px;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.25s ease,
+        transform 0.25s ease;
+}
+
+.toast.show {
+    opacity: 1;
+
+    transform:
+        translate(-50%, 0);
+}
+
+/* WARDROBE */
+
+.wardrobe-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fill,
+            minmax(220px, 1fr)
+        );
+
+    gap: 22px;
+}
+
+.wardrobe-card {
+    background: #f4f1eb;
+
+    overflow: hidden;
+
+    border: 1px solid #ddd8cf;
+}
+
+.wardrobe-image {
+    height: 320px;
+
+    position: relative;
+
+    background: #e9e5dd;
+
+    overflow: hidden;
+}
+
+.wardrobe-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition:
+        transform 0.4s ease;
+}
+
+.wardrobe-card:hover
+.wardrobe-image img {
+    transform: scale(1.03);
+}
+
+.delete-item {
+    position: absolute;
+
+    top: 10px;
+    right: 10px;
+
+    width: 34px;
+    height: 34px;
+
+    border: 0;
+
+    border-radius: 50%;
+
+    background: rgba(
+        255,
+        255,
+        255,
+        0.9
+    );
+
+    font-size: 22px;
+
+    cursor: pointer;
+}
+
+.wardrobe-info {
+    padding: 18px;
+}
+
+.wardrobe-category {
+    font-size: 10px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.14em;
+
+    color: #777;
+}
+
+.wardrobe-info h3 {
+    margin: 7px 0;
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size: 22px;
+
+    font-weight: 500;
+}
+
+.wardrobe-info p {
+    margin: 5px 0;
+
+    font-size: 13px;
+
+    color: #555;
+}
+
+.wardrobe-info small {
+    display: block;
+
+    margin-top: 12px;
+
+    color: #888;
+
+    font-size: 10px;
+}
+
+/* EMPTY */
+
+.empty-state {
+    grid-column: 1 / -1;
+
+    text-align: center;
+
+    padding: 70px 20px;
+
+    border: 1px dashed #c7c1b8;
+
+    background: #f5f2ec;
+}
+
+.empty-icon {
+    font-size: 40px;
+
+    margin-bottom: 15px;
+}
+
+.empty-state h3 {
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size: 30px;
+
+    margin: 0 0 10px;
+}
+
+.empty-state p {
+    color: #777;
+
+    max-width: 450px;
+
+    margin:
+        0 auto 25px;
+
+    line-height: 1.7;
+}
+
+/* LOADING */
+
+.loading {
+    grid-column: 1 / -1;
+
+    text-align: center;
+
+    padding: 60px;
+
+    color: #777;
+}
+
+/* STYLE MATCH */
+
+#match-result {
+    margin-top: 40px;
+}
+
+.match-box {
+    padding: 30px;
+
+    background: #f2eee7;
+
+    border: 1px solid #ddd6cc;
+}
+
+.match-heading {
+    margin-bottom: 25px;
+}
+
+.match-heading h3 {
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size: 35px;
+
+    font-weight: 500;
+
+    margin: 5px 0;
+}
+
+.match-heading p:last-child {
+    color: #777;
+}
+
+.outfit-visual {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(160px, 1fr)
+        );
+
+    gap: 15px;
+}
+
+.outfit-piece {
+    background: #fff;
+
+    overflow: hidden;
+}
+
+.outfit-piece img {
+    width: 100%;
+    height: 240px;
+
+    object-fit: cover;
+
+    display: block;
+}
+
+.outfit-piece span {
+    display: block;
+
+    padding: 12px;
+
+    font-size: 12px;
+}
+
+/* PLANNER */
+
+.planner-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(220px, 1fr)
+        );
+
+    gap: 18px;
+}
+
+.planner-empty {
+    grid-column: 1 / -1;
+
+    padding: 60px 20px;
+
+    text-align: center;
+
+    border: 1px dashed rgba(
+        255,
+        255,
+        255,
+        0.35
+    );
+}
+
+.day-card {
+    background: #f5f1ea;
+
+    color: #111;
+
+    overflow: hidden;
+}
+
+.day-title {
+    padding: 16px 18px;
+
+    font-size: 12px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.15em;
+
+    border-bottom: 1px solid #ddd7cd;
+}
+
+.day-outfit {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 1px;
+
+    background: #ddd7cd;
+}
+
+.day-piece {
+    background: #f5f1ea;
+}
+
+.day-piece img {
+    width: 100%;
+
+    height: 180px;
+
+    object-fit: cover;
+
+    display: block;
+}
+
+.day-piece span {
+    display: block;
+
+    padding: 10px;
+
+    font-size: 11px;
+}
+
+/* PROFILE */
+
+.profile-card {
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    padding: 20px;
+
+    background: #ebe7df;
+
+    margin-bottom: 20px;
+}
+
+.profile-avatar {
+    width: 55px;
+    height: 55px;
+
+    border-radius: 50%;
+
+    background: #111;
+
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size: 25px;
+}
+
+.profile-card strong {
+    font-size: 16px;
+}
+
+.profile-card p {
+    margin: 5px 0 0;
+
+    color: #777;
+
+    font-size: 13px;
+}
+
+.profile-stats {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    margin-bottom: 20px;
+
+    border: 1px solid #ddd7cd;
+}
+
+.profile-stats div {
+    padding: 18px;
+
+    text-align: center;
+
+    border-right:
+        1px solid #ddd7cd;
+}
+
+.profile-stats div:last-child {
+    border-right: 0;
+}
+
+.profile-stats strong {
+    display: block;
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size: 25px;
+}
+
+.profile-stats span {
+    display: block;
+
+    margin-top: 4px;
+
+    color: #777;
+
+    font-size: 10px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.08em;
+}
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+
+    .modal-panel {
+        padding: 30px 20px;
+    }
+
+    .wardrobe-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 12px;
+    }
+
+    .wardrobe-image {
+        height: 240px;
+    }
+
+    .wardrobe-info {
+        padding: 13px;
+    }
+
+    .wardrobe-info h3 {
+        font-size: 18px;
+    }
+
+    .outfit-visual {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .outfit-piece img {
+        height: 200px;
+    }
+
+    .profile-stats strong {
+        font-size: 20px;
+    }
+
+}
+
+@media (max-width: 480px) {
+
+    .wardrobe-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .wardrobe-image {
+        height: 330px;
+    }
+
+    .profile-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-stats div {
+        border-right: 0;
+
+        border-bottom:
+            1px solid #ddd7cd;
+    }
+
+    .profile-stats div:last-child {
+        border-bottom: 0;
+    }
+
+}
